@@ -1,0 +1,27 @@
+<!-- Template Formulaire de contact -->
+<!--<script type="text/ng-template" id="contact.html">-->
+<form ng-submit="contact(info)">
+  <fieldset>
+    <p ng-hide="isLoggedIn" >
+      <span><i class="fa fa-user"></i></span>
+      <input type=text ng-model="info.sendPseudo" size=35 placeholder="Pseudo" autofocus>
+    </p>
+    <p ng-hide="isLoggedIn" >
+      <span><i class="fa fa-user"></i></span>
+      <input type=text ng-model="info.sendLastname" size=35 placeholder="Prénom">
+    </p>
+    <p ng-hide="isLoggedIn" >
+      <span><i class="fa fa-envelope-o"></i></span>
+      <input type=mail ng-model="info.sendMail" size=35 placeholder="E-mail">
+    </p>
+    <p>
+      <span><i class="fa fa-pencil"></i></span>
+      <input type=text ng-model="info.sendSubject" size=35 placeholder="Sujet" required>
+    </p>
+    <p>
+      <span><i class="fa fa-comment-o"></i></span>
+      <textarea ng-model="info.sendComments" rows=4 placeholder="Commentaires" required></textarea>
+    </p>
+      <input type=submit value="Envoyer">
+  </fieldset>
+</form>

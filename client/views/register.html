@@ -1,0 +1,25 @@
+<!-- Template enregistrement -->
+<!--<script type="text/ng-template" id="register.html">-->
+<form ng-submit="register()">
+  <fieldset>
+    <p>
+      <span><i class="fa fa-user"></i></span>
+      <input type=text ng-model="me.newPseudo" size=35 placeholder="Pseudo" autofocus required>
+    </p>
+    <p>
+      <span><i class="fa fa-user"></i></span>
+      <input type=text ng-model="me.newLastname" size=35 placeholder="Prénom" required>
+    </p>
+    <p>
+      <span><i class="fa fa-envelope-o"></i></span>
+      <input type=mail ng-model="me.newMail" placeholder="E-mail" required>
+    </p>
+    <p>
+      <span><i class="fa fa-lock"></i></span>
+      <input type=password ng-model="me.newPassword" placeholder="Mot de passe" required>
+    </p>
+    <p>
+      <input type=submit value="Sign In">
+    </p>
+  </fieldset>
+</form>

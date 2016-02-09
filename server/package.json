@@ -1,0 +1,23 @@
+{
+  "name": "login-contact",
+  "main": "server.js",
+  "version": "0.0.2",
+  "description": "permet de se logger et d'envoyer un formulaire de contact",
+  "author": "Mathieu <mathieu0709@gmail.com>",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "~4.13.x",
+    "express-jwt": "^3.3.0",
+    "fs": "0.0.2",
+    "gravatar": "^1.4.0",
+    "json-web-token": "^1.6.3",
+    "jsonwebtoken": "^5.5.4",
+    "mongoose": "^4.3.7",
+    "morgan": "^1.6.1",
+    "nodemailer": "~2.0.x",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+  }
+}

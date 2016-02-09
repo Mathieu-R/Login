@@ -1,0 +1,228 @@
+body {
+	background-image: url(../img/cloud_1920X1080.jpg);
+	overflow: auto;
+	margin: 0;
+}
+section {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+nav {
+	height: 50px;
+	color: white;
+	padding: 5px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	/*position: fixed /* Position fixe */
+}
+nav ul {
+	color: darkgray;
+	margin: 0;
+	margin-bottom: 7px;
+	padding: 0;
+	width: 100%;
+	font-family: Helvetica, "sans serif";
+	font-size: 1.5em;
+	list-style-type: none;
+	display: flex;
+	justify-content: flex-end;
+}
+nav > ul > li {
+	margin-right: 15px;
+}
+h1 {
+	height: 200px;
+	color: white;
+	font-size: 4em;
+	font-family: Ubuntu;
+	text-align: center;
+	padding-top: 10px;
+	overflow: hidden;
+}
+.typed-cursor {
+	opacity: 0;
+	animation: blink 1s 7;
+}
+@keyframes blink{
+	0% {opacity:1;}
+	50% {opacity:0;}
+	100% {opacity:1;}
+}
+.homeTitle {
+/* Animation texte montant */
+	display: block;
+	animation-name: scroll-up;
+	animation-duration: 2s;
+	animation-delay: 10ms;
+	animation-timing-function: ease-out;
+}
+@keyframes scroll-up {
+	0% {
+		transform: translateY(100%);
+	}
+	50%{
+		transform: translateY(-8%);
+	}
+	65%{
+		transform: translateY(4%);
+	}
+	80%{
+		transform: translateY(-4%);
+	}
+	95%{
+		transform: translateY(2%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+h2 {
+	font-family: Lato;
+	color: white;
+	position: relative;
+	top: 200px;
+	text-align: center;
+	transition: width 1s, height 1s ease-out;
+}
+a {
+	text-decoration: none;
+	color: #34495e;
+	text-transform: uppercase;
+	transition: 0.2s linear;
+}
+a:hover {
+	color: #3498db;
+}
+nav > ul > li {
+	padding: 0 20px;
+	border-right: 1px solid #aaa;
+	opacity: 0.5;
+}
+.active {
+	font-weight: bold;
+	opacity: 1;
+}
+.active > a {
+	color: #3498db;
+}
+form {
+	box-sizing: border-box;
+	font-family: Roboto;
+	margin: 10px;
+	padding: 20px;
+	color: white;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+	width: 550px;
+	border-radius: 5px;
+	margin-top: 150px;
+}
+fieldset {
+	border: none;
+	padding: 10px;
+}
+input[type=text],input[type=mail],input[type=password], textarea {
+	width: 100%;
+	display: block;
+	margin: 0 10px 10px 10px;
+	border: 0;
+	background: rgba(0,0,0,.15);
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	height: 45px;
+	line-height: 45px;
+	margin-bottom: 10px;
+	font-size: 1em;
+  color: white;
+	text-indent: 35px;
+}
+input[type=text]:focus, input[type=mail]:focus, input[type=password]:focus, textarea:focus {
+	outline: none;
+	border-color: white;
+	transition: 1s ease-out;
+}
+input[type=submit] {
+	text-align: center;
+	margin: 10px;
+	width: 100%;
+	border: 0;
+	background: white;
+	border-radius: 5px;
+	height: 50px;
+	color: gray;
+	font-size: 1.3em;
+}
+.block {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+fieldset p {
+	margin: 0;
+}
+p span {
+	position: relative;
+	top: 35px;
+	left: 20px;
+	font-size: 20px;
+}
+.profil p {
+	font-family: Oswald;
+	font-size: 1.2em;
+	color: white;
+	margin-left: 5px;
+}
+.profil i {
+	color: white;
+	font-size: 1.5em;
+}
+.profil div {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #34495e;
+}
+.profil {
+	width: 430px;
+	background-color: #2c3e50;
+	display: inline-flex;
+	padding: 20px 15px;
+	border-radius: 3px;
+}
+.photo {
+	background-image: url(../img/symphony.png);
+	height: 150px;
+	margin: 0;
+}
+img {
+	/*background-image: url(../img/mathieu.png);*/
+	display: block;
+	width: 140px;
+	height: 145px;
+	margin: 1em auto;
+	background-size: cover;
+	border-radius: 99em;
+	border: 1px solid #eee;
+ 	box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+.left {
+	width: 200px;
+}
+.right {
+	width: 250px;
+}
+footer {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	margin: 0;
+	background: #34495e;
+	display: none;
+}
+footer li {
+	font-family: Raleway;
+	font-size: 1em;
+	color: white;
+	list-style-type: none;
+}

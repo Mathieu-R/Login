@@ -75,7 +75,7 @@ router.post("/sent", function(req, res) { // Envoi un e-mail par "/sent"
                     "<p>" + req.body.comments + "</p>";
 
   var mailOptions = {
-    to: "mathieu0709@gmail.com", // A
+    to: secret.mailuser, // A
     subject: req.body.subject, // Sujet
     from: req.body.lastname + ' <' + req.body.mail +'>', // De
     html: htmlContent // Contenu

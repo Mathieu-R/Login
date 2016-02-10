@@ -48,13 +48,21 @@
 			<ui-view></ui-view> <!-- Affichage du template -->
 		</section>
 
-		<footer>
+		<footer class="footer animated slideInUp">
 			<ul>
 				<li>Login system by Rousseau Mathieu</li>
 				<li>Powered by <i>AngularJS &amp; NodeJS</i></li>
 				<li>Remerciements : - www.sitepoint.com &amp; Gravatar</li>
 			</ul>
 		</footer>
-
+		<script type="text/javascript">
+			$(function(){
+				$("footer").hide();
+				$window.scroll(function() {
+					alert("scroll");
+					$("footer").show();
+				});
+			});
+		</script>
 	</body>
 </html>

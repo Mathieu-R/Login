@@ -23,6 +23,7 @@ var user = require("./users");
 
 var ctrlProfile = require("./profile"); // Import profile.js
 var ctrlAuth = require("./authentication"); // Import authentication.js
+var ctrlUpdate = require("./update");
 
 require("./db");
 require("./passport");
@@ -92,6 +93,8 @@ router.post("/sent", function(req, res) { // Envoi un e-mail par "/sent"
 
   res.redirect("/"); // On redirige l'utilisateur vers l'acceuil
 });
+
+router.put("/update", auth, ctrlUpdate.profileUpdate); // Mise à jour du profile
 
 app.use("/", router); // Chemin de base
 

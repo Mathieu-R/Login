@@ -15,10 +15,10 @@ var userSchema = new mongoose.Schema({ // Schema DB
   hash: String,
   salt: String,
   gravatar: String,
-  hobbys: String,
-  Competences: String,
-  Humeur: String
-  //created: Date
+  hobbys: {type: String, default: "..."},
+  competences: {type: String, default: "..."},
+  humeur: {type: String, default:"..."},
+  created: {type: Date, default: Date.now}
 });
 
 userSchema.methods.setPassword = function(password) {

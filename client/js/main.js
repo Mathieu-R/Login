@@ -102,16 +102,6 @@ login.config(['$stateProvider', '$urlRouterProvider', "$locationProvider", funct
   $stateProvider.state('profile', {
                               url: '/profile',
                               templateUrl: 'views/profile.html',
-                              /*resolve: ["$state", "$q", function($state, $q) {
-                                console.log(authentication.isLoggedIn());
-                                if (!authentication.isLoggedIn()) {
-                                  $state.go("Non autorisé")
-                                  $q.defer().reject();
-                                  }
-                                else {
-                                  $q.defer.resolve();
-                                }
-                              }],*/
                               controller: 'profile'
                               });
   $stateProvider.state('contact', {
@@ -121,6 +111,14 @@ login.config(['$stateProvider', '$urlRouterProvider', "$locationProvider", funct
                                 });
   $urlRouterProvider.otherwise('/home'); // Autrement => Redirection vers /
   //$locationProvider.html5Mode(true);
+
+  /*$rootScope.$on("$stateChangeStart", function(event, toState, $rootScope) {
+    if (toState.name === "profile" && !$rootScope.isLoggedIn) {
+      event.preventDefault();
+      //$state.transitionTo("onboard", null, {notify:false});
+      $state.go("home");
+    }
+  });*/
 
 }]);
 
@@ -251,11 +249,42 @@ login.controller("login", function($scope, $http, $log, authentication, $locatio
 // Contrôlleur profile
 login.controller("profile", function($scope, $http, profileData, authentication, $rootScope, $location) {
 
+  $scope.information = {
+
+  };
+
   profileData.getProfile()
-    .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var et on modifie le titre du "home"
-    $scope.me = profile;
-    console.log($scope.me)
+    .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var
+    $scope.information = profile;
+    console.log($scope.information)
     });
+
+    $scope.edit = false; // On cache le champs d'edition par défaut
+
+    $scope.modify = function(champ) {
+      champ.edit = true // Lorsqu'on double-click sur un champ, il devient éditable
+    }
+
+    $scope.modifyAll = function() {
+      $scope.edit = true // Lorsqu'on click sur modifier, tout les champs deviennent editables
+    }
+
+  $scope.update = function() {
+    $http.put("/update", $scope.information, {headers: {Authorization: 'Bearer '+ authentication.getToken()}})
+      .success(function(data) {
+        console.log("Mises à jour envoyées");
+        console.log(data);
+        //$scope.inforamtion = data;
+      })
+      .error(function(data, err) {
+        console.log("Un problème est survenu lors de la mise à jour du profile");
+        console.log(err);
+      })
+      .then(function() {
+        $scope.edit = false;
+      });
+  };
+
 });
 
 // Contrôleur contact

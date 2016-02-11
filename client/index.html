@@ -21,9 +21,11 @@
 
 		<!-- Scripts -->
 		<script src="js/main.js" type="text/javascript"></script>
+		<script src="js/responsive.js" type="text/javascript"></script>
 
 		<!-- Fichiers css -->
 		<link rel=stylesheet href=css/index.css type="text/css">
+		<link rel="stylesheet" href="css/responsive.css" media="screen" type="text/css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css"> <!-- Icon -->
 		<link rel="stylesheet" href="css/animate.css" type="text/css"> <!-- CSS animation -->
 
@@ -33,16 +35,21 @@
 		<!--<base href="/home">-->
 	</head>
 	<body ng-controller="MainCtrl as ctrl">
-		<nav>
-			<ul>
-				<li ui-sref-active='active'><a ui-sref="home">Home</a></li>
-				<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="register">Register</a></li>
-				<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="login">Login</a></li>
-				<li ui-sref-active='active'><a ui-sref="contact">Contact</a></li>
-		  	<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="profile">{{currentUser.lastname}}</a></li>
-				<li ng-show="isLoggedIn"><a ui-sref="home" ng-click="logout()">Logout</a></li>
-			</ul>
-		</nav>
+
+		<header class="header">
+			<a href="#" class="header__icon" id="header__icon"></a>
+			<!--<a href="#" class="header__logo">Logo</a> Logo (à voir plus tard) -->
+			<nav class="menu">
+				<ul>
+					<li ui-sref-active='active'><a ui-sref="home">Home</a></li>
+					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="register">Register</a></li>
+					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="login">Login</a></li>
+					<li ui-sref-active='active'><a ui-sref="contact">Contact</a></li>
+			  	<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="profile">{{currentUser.lastname}}</a></li>
+					<li ng-show="isLoggedIn"><a ui-sref="home" ng-click="logout()">Logout</a></li>
+				</ul>
+			</nav>
+		</header>
 
 		<section class="block">
 			<ui-view></ui-view> <!-- Affichage du template -->
@@ -55,14 +62,5 @@
 				<li>Remerciements : - www.sitepoint.com &amp; Gravatar</li>
 			</ul>
 		</footer>
-		<script type="text/javascript">
-			$(function(){
-				$("footer").hide();
-				$window.scroll(function() {
-					alert("scroll");
-					$("footer").show();
-				});
-			});
-		</script>
 	</body>
 </html>

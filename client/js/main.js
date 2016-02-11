@@ -138,15 +138,6 @@ login.controller("MainCtrl", function($rootScope, authentication, $scope, $locat
     $location.path("/home");
     $rootScope.isLoggedIn = authentication.isLoggedIn(); // Authentifié ? True : False
   }
-
-  $(window).scroll(function() {
-    if($(this).scrollTop > 20) {
-      $('footer').scrollDown(300);
-    }
-    else {
-      $('footer').slideUp(300);
-    }
-  });
 });
 
 // Contrôleur home
@@ -176,6 +167,12 @@ login.controller("home", function($rootScope, authentication, $scope, profileDat
     })
   }
   else {$scope.title = "Bienvenue"}
+
+  $(function() {
+    $('.arrow__button').click(function() {
+      $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    });
+  });
 
 });
 

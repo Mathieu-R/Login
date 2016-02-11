@@ -1,5 +1,58 @@
 <!-- Template Home -->
-<h1>
-  <span ng-class="getTitleType()">{{title}}</span>
-</h1>
-<h2 ng-show="sent">Formulaire envoyé !!</h2>
+
+<div class="home">
+  <h1 class="titleHome">
+    <span ng-class="getTitleType()">{{title}}</span>
+  </h1>
+  <h2 id=sent ng-show="sent">Formulaire envoyé !!</h2>
+  <a class="arrow__button"><img class="arrow" src="../img/white__arrow.svg" alt="arrow"></a>
+</div>
+
+<!-- Footer -->
+<div class="more">
+
+  <!-- Basic Infos -->
+  <div class="basicInfo">
+    <div class="basicInfo__title">
+      <h1>Playground</h1>
+    </div>
+    <div class="basicInfo__info">
+      <h2>"Ce site est un peu ma cours de récréation<br>en matière de développement web"</h2>
+      <p>Réalisé avec les toutes dernières technologies du web</p>
+      <p>Remerciements : - www.sitepoint.com &amp; Gravatar</p>
+    </div>
+  </div>
+
+  <!-- All Infos -->
+  <div class="allInfo">
+    <section class="features wow fadeInLeft">
+      <h2 class="footerTitles">Fonctionnalités</h2>
+      <ul>
+        <li>Login (mot de passe crypté)</li>
+        <li>Page de profile personnalisable</li>
+        <li>Chat</li>
+        <li>Formulaire de contact</li>
+      </ul>
+    </section>
+    <section class="techno wow fadeInLeft" data-wow-delay="0.2s">
+      <h2 class="footerTitles">Technologies</h2>
+      <ul>
+        <li>HTML 5</li>
+        <li>CSS 3</li>
+        <li>AngularJS</li>
+        <li>NodeJS</li>
+        <li>MongoDB</li>
+      </ul>
+    </section>
+    <section class="aboutMe wow fadeInLeft" data-wow-delay="0.4s">
+      <h2 class="footerTitles">A propos de moi</h2>
+        <p>
+          Je m'appelle Mathieu Rousseau, 19 ans.<br>
+          Etudiant à l'Ephec en 1TI (informatique NDLR).<br>
+          Passioné de web, de "beaux sites" mais aussi
+          musicien aguerri (Piano et Guitare).<br>
+          Je vous souhaite la bienvenue sur mon site.
+        </p>
+    </section>
+  </div>
+</div>

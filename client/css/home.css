@@ -1,0 +1,107 @@
+.arrow__button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+/* Animation floating arrow */
+.arrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 15px;
+  left: 49%;
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: floating;
+  -moz-animation-duration: 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+}
+@keyframes floating{
+  from {transform:translate(0, 0px);}
+  65% {transform:translate(0, 15px);}
+  to {transform: translate(0, -0px);}
+}
+@-webkit-keyframes floating{
+  from {-webkit-transform:translate(0, 0px);}
+  65% {-webkit-transform:translate(0, 15px);}
+  to {-webkit-transform: translate(0, -0px);}
+}
+@-moz-keyframes floating{
+  from {-moz-transform:translate(0, 0px);}
+  65% {-moz-transform:translate(0, 15px);}
+  to {-moz-transform: translate(0, -0px);}
+}
+/* Animation floating arrow */
+.home {
+  height: 900px;
+  width: 100%;
+}
+.more {
+  margin: auto;
+  padding: 100px 0;
+  background-color: white;
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.basicInfo {
+  display: flex;
+  padding: 0 50px;
+}
+.basicInfo__title {
+  font-family: Raleway;
+  font-size: 2.5em;
+  width: 350px;
+  color: #444444;
+  border-top: 10px solid #3498db;
+  text-align: center;
+}
+.basicInfo__info {
+  font-family: Lato;
+  color: #95a5a6;
+  width: 750px;
+  text-align: center;
+}
+.allInfo {
+  display: inline-flex;
+  padding: 0 50px;
+}
+.allInfo section {
+  display: block;
+}
+.allInfo h2 {
+  font-family: Helvetica;
+  color: #2980b9;
+  font-size: 2em;
+}
+.allInfo ul {
+  list-style: none;
+}
+.features ul, .techno ul, .aboutMe p {
+  font-family: Raleway;
+}
+.features ul, .techno ul {
+  padding: 0;
+}
+.features li, .techno li {
+  line-height: 28px;
+}
+.features li:before, .techno li:before {
+  content: '';
+  background-image: url("../img/Check-24.png");
+  background-repeat: no-repeat;
+  padding-right: 10px;
+  padding-bottom: 30px;
+  position: relative;
+  bottom: 2px;
+}

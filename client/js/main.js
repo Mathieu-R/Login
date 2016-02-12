@@ -335,6 +335,12 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
   });
   login.controller("chat", function($scope, $http) {
 
+    var socket = io.connect('http://localhost:8080/#/chat'); // Socket io
+
+    $scope.connect = function(user) {
+      socket.emit("connect", {user: user});
+    }
+
     $scope.sendMessage = function() {
 
     }

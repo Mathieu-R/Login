@@ -18,8 +18,8 @@
 		<script src="https://code.angularjs.org/1.5.0/angular-animate.js" type="text/javascript"> // Animation</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js" type="text/javascript"> // JQuery</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js" type="text/javascript"> //TypedJS</script>
-		<script src="js/wow.min.js"> // Animation on scroll</script>
-		<script src="https://cdn.socket.io/socket.io-1.4.5.js"> // Socket io</script>
+		<script src="js/wow.min.js" type="text/javascript"> // Animation on scroll</script>
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js" type="text/javascript"> // Socket io</script>
 
 		<!-- Scripts -->
 		<script src="js/main.js" type="text/javascript"></script>
@@ -49,7 +49,7 @@
 					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="register">Register</a></li>
 					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="login">Login</a></li>
 					<li ui-sref-active='active'><a ui-sref="contact">Contact</a></li>
-					<li ui-sref-active='active'><a ui-sref="chat">Chat</a></li>
+					<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="chat" ng-click="connect(me.pseudo)">Chat</a></li>
 			  	<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="profile">{{currentUser.lastname}}</a></li>
 					<li ng-show="isLoggedIn"><a ui-sref="home" ng-click="logout()">Logout</a></li>
 				</ul>

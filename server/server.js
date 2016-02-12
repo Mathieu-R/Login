@@ -1,7 +1,7 @@
 var express = require("express"); // Routes
 var app = express();
 var http = require("http");
-var server = http.createServer(app);
+var server = http.Server(app);
 var path = require("path"); // Join path
 var logger = require("morgan"); // Logger
 var cookieParser = require("cookie-parser"); // Cookie
@@ -12,6 +12,7 @@ var router = express.Router(); // Router (express 4.0)
 var mongoose = require("mongoose"); // Connect to MongoDB (NoSQL)
 var exjwt = require("express-jwt"); // Express JWT
 var fs = require("fs");
+var io = require("socket.io")(server); // Socket io
 
 var secret = JSON.parse(fs.readFileSync(path.join(process.cwd(), "secret.json"), "utf8"));
 
@@ -27,6 +28,7 @@ var ctrlUpdate = require("./update");
 
 require("./db");
 require("./passport");
+require("./chat");
 
 
 app.use(express.static("../client")); // Définition de la racine

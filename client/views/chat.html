@@ -1,0 +1,24 @@
+<section class="chat">
+  <aside class="user__panel">
+    <h2 id=title__connected>Utilisateurs</h2>
+    <hr>
+    <ul id=user__connected>
+      <li></li>
+    </ul>
+  </aside>
+  <div class="chat__main">
+    <div class="chat__box">
+      <div class="message__bigblock">
+        <h3 ng-bind="user"></h3>
+        <div class="animated fadeInDown message__block">
+          <p ng-class="getMessage(user)"></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <form ng-submit="sendMessage()" class="chat__input">
+      <textarea name="message" placeholder="Envoyer un message..." rows="4"></textarea>
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
+</section>

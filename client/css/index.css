@@ -125,7 +125,7 @@ nav > ul > li {
   color: white;
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
-form {
+.form {
 	box-sizing: border-box;
 	font-family: Roboto;
 	margin: 10px;
@@ -140,7 +140,7 @@ fieldset {
 	border: none;
 	padding: 10px;
 }
-fieldset input[type=text],input[type=mail],input[type=password], textarea {
+fieldset input[type=text],input[type=mail],input[type=password], fieldset textarea {
 	width: 100%;
 	display: block;
 	margin: 0 10px 10px 10px;

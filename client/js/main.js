@@ -109,6 +109,11 @@ login.config(['$stateProvider', '$urlRouterProvider', "$locationProvider", funct
                                 templateUrl: 'views/contact.html',
                                 controller: 'contact'
                                 });
+$stateProvider.state('chat', {
+                              url: '/chat',
+                              templateUrl: 'views/chat.html',
+                              controller: 'chat'
+                              });
   $urlRouterProvider.otherwise('/home'); // Autrement => Redirection vers /
   //$locationProvider.html5Mode(true);
 
@@ -246,9 +251,9 @@ login.controller("login", function($scope, $http, $log, authentication, $locatio
 // Contrôlleur profile
 login.controller("profile", function($scope, $http, profileData, authentication, $rootScope, $location) {
 
-  $scope.information = {
+  /*$scope.information = {
 
-  };
+  };*/
 
   profileData.getProfile()
     .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var
@@ -300,9 +305,9 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
     console.log($scope.me);
     if(authentication.isLoggedIn()) {
       $scope.contactInfo = {
-        pseudo: $scope.me.pseudo,
-        lastname: $scope.me.lastname,
-        mail: $scope.me.mail,
+        pseudo: $scope.information.pseudo,
+        lastname: $scope.information.lastname,
+        mail: $scope.information.mail,
         subject: $scope.info.sendSubject,
         comments: $scope.info.sendComments
       };
@@ -327,4 +332,10 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
         $location.path("home");
       });
     };
+  });
+  login.controller("chat", function($scope, $http) {
+
+    $scope.sendMessage = function() {
+
+    }
   });

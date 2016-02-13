@@ -3,21 +3,23 @@
     <h2 id=title__connected>Utilisateurs</h2>
     <hr>
     <ul id=user__connected>
-      <li></li>
+      <li class=fix ng-repeat="user in chat.users"><img id="chat__avatar" ng-src={{user.gravatar}}><div class="pseudo">{{user.pseudo}}</div></li>
     </ul>
   </aside>
   <div class="chat__main">
     <div class="chat__box">
-      <div class="message__bigblock">
-        <h3 ng-bind="user"></h3>
-        <div class="animated fadeInDown message__block">
-          <p ng-class="getMessage(user)"></p>
+      <div class="message__bigblock" ng-repeat="block in chat.blocks">
+        <h3 >{{block.pseudo}}</h3><h5 >{{block.time}}</h5>
+        <div class="animated fadeInUp message__block" ng-class="getMessageType(block.pseudo)">
+          <p id=message>
+            {{block.user}}
+          </p>
         </div>
       </div>
     </div>
     <hr>
-    <form ng-submit="sendMessage()" class="chat__input">
-      <textarea name="message" placeholder="Envoyer un message..." rows="4"></textarea>
+    <form ng-submit="sendMessage($event)" class="chat__input">
+      <textarea id=boxMessage name="message" ng-model="box.message" placeholder="Envoyer un message..." rows="4"></textarea>
       <input type="submit" value="Envoyer">
     </form>
   </div>

@@ -333,15 +333,57 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
       });
     };
   });
-  login.controller("chat", function($scope, $http) {
+  login.controller("chat", function($scope, profileData) {
 
-    var socket = io.connect('http://localhost:8080/#/chat'); // Socket io
+    var socket = io.connect('http://localhost:8080'); // Socket io
 
-    $scope.connect = function(user) {
-      socket.emit("connect", {user: user});
+    $scope.chat = {
+      //users: [{
+      //        pseudo: new String(),
+      //        gravatar: new String()
+      //       }],
+      //blocks: [{
+      //         pseudo: new String(),
+      //         time: new String(),
+      //         message: new String()
+      //        }]
     }
 
-    $scope.sendMessage = function() {
-
+    $scope.getMessageType = function(pseudo) {
+      return {
+      //  messageByMe: pseudo == $scope.user.pseudo,
+      //  messageByAnother: pseudo != $scope.user.pseudo
+      }
     }
+
+    $scope.me = profileData.getProfile()
+      .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var
+      $scope.user = profile;
+      socket.emit("connect", {user: $scope.user.pseudo, gravatar: $scope.user.gravatar});
+    }, function(msg) {
+      alert("msg"); // Sinon message d'erreur
+    });
+
+    $scope.sendMessage = function(event) {
+      if($scope.box.message) {
+        socket.emit("message", {message: $scope.box.message}) // Lorsqu'on envoi un nouveau message
+        $("#boxMessage").val(" "); // On vide le textarea
+      }
+      event.preventDefault();
+    }
+
+    socket.on("newMessage", function(message) {
+      console.log("new message");
+      $scope.chat.blocks.push(message);
+      $("#message").animate({scrollTop: $("#message").prop("scrollHeight")}, 500);
+    });
+
+    socket.on("newUser", function(data) {
+      console.log("user connected")
+      $scope.chat.users.push({pseudo: data.user, gravatar: data.gravatar}); // On ajoute l'user
+    })
+    socket.on("disconnect", function(user) {
+      console.log("user disconnected");
+      $scope.chat.users.slice(indexOf(user), 1); // On retire l'user
+    })
   });

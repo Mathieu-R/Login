@@ -49,7 +49,7 @@
 					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="register">Register</a></li>
 					<li ui-sref-active='active' ng-hide="isLoggedIn"><a ui-sref="login">Login</a></li>
 					<li ui-sref-active='active'><a ui-sref="contact">Contact</a></li>
-					<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="chat" ng-click="connect(me.pseudo)">Chat</a></li>
+					<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="chat">Chat</a></li>
 			  	<li ui-sref-active='active' ng-show="isLoggedIn"><a ui-sref="profile">{{currentUser.lastname}}</a></li>
 					<li ng-show="isLoggedIn"><a ui-sref="home" ng-click="logout()">Logout</a></li>
 				</ul>

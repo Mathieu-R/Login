@@ -258,7 +258,6 @@ login.controller("profile", function($scope, $http, profileData, authentication,
   profileData.getProfile()
     .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var
     $scope.information = profile;
-    console.log($scope.information)
     });
 
     $scope.edit = false; // On cache le champs d'edition par défaut

@@ -374,7 +374,7 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
     socket.on("newMessage", function(message) {
       console.log("new message");
       $scope.chat.blocks.push(message);
-      $("#message").animate({scrollTop: $("#message").prop("scrollHeight")}, 500);
+      $("#message").animate({scrollTop: $("#message").prop("scrollHeight")}, 500); // Merci Grafikart :D
     });
 
     socket.on("newUser", function(data) {

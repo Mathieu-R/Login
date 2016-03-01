@@ -4,14 +4,17 @@ var http = require("http");
 var server = http.Server(app);
 var io = require("socket.io")(server); // Socket io
 
-io.sockets.on("connection", function(socket) {
+console.log("chat.js");
+//alert("chat.js");
+
+io.on("connection", function(socket) {
   console.log("User connected");
 
   socket.on("connect", function(data){
-    console.log("ok");
+    /*console.log("ok");
     console.log("user");
     console.log("gravatar");
-    console.log(data.user + "est connecté");
+    console.log(data.user + "est connecté");*/
     socket.emit("newUser", data);
   });
 

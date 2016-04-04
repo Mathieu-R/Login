@@ -46,12 +46,6 @@ app.use(function(err, req, res, next) {
   }
 });
 
-//app.use("/profile", auth);
-
-router.get("/", function(req, res) { // Une route
-  res.status(200).send("Home page");
-});
-
 router.get("/", function (req,res) { // / + Everything => Renvoi index.html
   res.status(200);
   res.set({"content-type": "text/html; charset=utf-8"});

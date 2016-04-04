@@ -332,26 +332,34 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
       });
     };
   });
+
   login.controller("chat", function($scope, profileData) {
 
-    var socket = io("ws://localhost:8080"); // Socket io
+    var socket = io("localhost:8080"); // Socket io
 
     $scope.chat = {
-      //users: [{
-      //        pseudo: new String(),
-      //        gravatar: new String()
-      //       }],
-      //blocks: [{
+      /*users: {
+      //        pseudo: {
+      //          gravatar: new String()
+      //        }
+    },*/
+      blocks: [
+      //        {
       //         pseudo: new String(),
       //         time: new String(),
       //         message: new String()
-      //        }]
+      //        }
+                ]
     }
+
+    $scope.users = [];
+
+    $scope.me;
 
     $scope.getMessageType = function(pseudo) {
       return {
-      //  messageByMe: pseudo == $scope.user.pseudo,
-      //  messageByAnother: pseudo != $scope.user.pseudo
+        messageByMe: pseudo == $scope.me,
+        messageByAnother: pseudo != $scope.me
       }
     }
 
@@ -362,34 +370,38 @@ login.controller("contact", function($scope, $rootScope, $http, $log, $location,
     $scope.me = profileData.getProfile()
       .then(function(profile) { // On get le profile, une fois que c'est fait, on l'ajoute dans la var
         $scope.user = profile;
-        socket.emit("connect", {user: $scope.user.pseudo, gravatar: $scope.user.gravatar});
+        socket.emit("login", {
+          user: $scope.user.pseudo,
+          gravatar: $scope.user.gravatar
+        });
         }, function(msg) {
           alert("msg"); // Sinon message d'erreur
       })
 
-    $scope.sendMessage = function(event) {
-      if($scope.box.message) {
-        socket.emit("message", {message: $scope.box.message}) // Lorsqu'on envoi un nouveau message
-        console.log($scope.box.message);
-        $("#boxMessage").val(" "); // On vide le textarea
+      socket.on("newUser", function(user) {
+        var pseudo = user.pseudo;
+        var gravatar = user.gravatar;
+        $scope.users.push({pseudo: pseudo, gravatar: gravatar});
+      })
+
+      $scope.sendMessage = function sendMessage(event) {
+        if ($scope.box.message) {
+          socket.emit("message", { // Lorsqu'on envoi un nouveau message
+            message: $scope.box.message
+          })
+          $("#boxMessage").val(""); // On vide le textarea
+          $("#boxMessage").focus(); // Focus sur le textarea
+        }
       }
-      //event.preventDefault();
-    }
 
-    socket.on("newMessage", function(message) {
-      console.log("new message");
-      $scope.chat.blocks.push(message);
-      $("#message").animate({scrollTop: $("#message").prop("scrollHeight")}, 500); // Merci Grafikart :D
-    })
+      socket.on("newMessage", function(message) {
+        $scope.chat.blocks.push(message);
+        $("#message").animate({scrollTop: $("#message").prop("scrollHeight")}, 500); // Merci Grafikart :D
+      })
 
-    socket.on("newUser", function(data) {
-      console.log("user connected")
-      $scope.chat.users.push({pseudo: data.user, gravatar: data.gravatar}); // On ajoute l'user
-    })
-
-    socket.on("disconnect", function(user) {
-      console.log("user disconnected");
-      $scope.chat.users.slice(indexOf(user), 1); // On retire l'user
-    })
+      socket.on("disconnect", function(user) {
+        console.log("user disconnected");
+        $scope.users.splice(indexOf(user), 1); // On retire l'user
+      })
 
   });

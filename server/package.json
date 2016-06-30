@@ -14,7 +14,7 @@
     "gravatar": "^1.4.0",
     "json-web-token": "^1.6.3",
     "jsonwebtoken": "^5.5.4",
-    "mongoose": "^4.3.7",
+    "mongoose": "^4.5.2",
     "morgan": "^1.6.1",
     "nodemailer": "~2.0.x",
     "passport": "^0.3.2",

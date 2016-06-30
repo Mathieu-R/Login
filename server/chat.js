@@ -4,7 +4,8 @@ var http = require("http");
 var server = http.Server(app);
 var io = require("socket.io")(server); // Socket io
 
-io.on("connection", function(socket) {
+io.of("/chat").on("connection", function(socket) {
+  console.log("Connecté au serveur")
   var me;
   var users = [];
   for(var i in users) {
